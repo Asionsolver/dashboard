@@ -23,7 +23,7 @@ const Sidebar = () => {
   const [sidebarItems, setSidebarItems] = useState<SidebarItem[]>([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const pathname = usePathname();
-  console.log(pathname);
+  // console.log(pathname);
 
   useEffect(() => {
     // Fetch sidebar items from the JSON file
@@ -42,7 +42,7 @@ const Sidebar = () => {
         className={`bg-sidebar border-border flex h-full flex-col border-r p-4 backdrop-blur-md`}
       >
         <button
-          className="hover:bg-sidebar-primary max-w-fit cursor-pointer rounded-full p-2 text-gray-300 transition-colors hover:text-white"
+          className="hover:bg-sidebar-primary ml-2 max-w-fit cursor-pointer rounded-full p-2 text-gray-300 transition-colors hover:text-white"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           aria-label="Toggle Sidebar"
         >

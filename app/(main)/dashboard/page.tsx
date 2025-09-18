@@ -1,4 +1,3 @@
-import Card from "@/components/ui/card";
 import * as motion from "motion/react-client";
 import { PiUsersBold } from "react-icons/pi";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
@@ -6,6 +5,7 @@ import { FaBullseye } from "react-icons/fa";
 import { redirect } from "next/navigation";
 import { FiEdit } from "react-icons/fi";
 import { auth } from "@/auth";
+import StatisticsCard from "@/components/ui/statistics-card";
 
 export default async function Dashboard() {
   const session = await auth();
@@ -34,20 +34,30 @@ export default async function Dashboard() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <Card name="Total Posts" icon={FiEdit} value="150" change="+5%" />
-          <Card
+          <StatisticsCard
+            name="Total Posts"
+            icon={FiEdit}
+            value="150"
+            change="+5%"
+          />
+          <StatisticsCard
             name="Active Users"
             icon={PiUsersBold}
             value="1,234"
             change="+8%"
           />
-          <Card
+          <StatisticsCard
             name="Page Views"
             icon={IoChatbubbleEllipsesOutline}
             value="45.2K"
             change="+12%"
           />
-          <Card name="Engagement" icon={FaBullseye} value="89%" change="+3%" />
+          <StatisticsCard
+            name="Engagement"
+            icon={FaBullseye}
+            value="89%"
+            change="+3%"
+          />
         </motion.div>
       </main>
     </div>

@@ -11,8 +11,8 @@
       "icon": "users"
     },
     {
-      "name": "Edit Content",
-      "href": "/edit",
+      "name": "Posts",
+      "href": "/posts",
       "icon": "edit"
     }
   ]
