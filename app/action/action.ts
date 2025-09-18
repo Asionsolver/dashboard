@@ -1,0 +1,19 @@
+"use server";
+type Provider = "google";
+
+import { signIn, signOut } from "@/auth";
+
+export async function doSocialLogin(formData: FormData) {
+  const action = formData.get("action");
+  //   console.log(action);
+
+  if (action === "google") {
+    await signIn(action as Provider, { redirectTo: "/dashboard" });
+  } else {
+    throw new Error("Invalid provider");
+  }
+}
+
+export async function doLogout() {
+  await signOut({ redirectTo: "/" });
+}

@@ -1,0 +1,19 @@
+{
+  "sidebarItems": [
+    {
+      "name": "Dashboard",
+      "href": "/dashboard",
+      "icon": "dashboard"
+    },
+    {
+      "name": "Users",
+      "href": "/users",
+      "icon": "users"
+    },
+    {
+      "name": "Edit Content",
+      "href": "/edit",
+      "icon": "edit"
+    }
+  ]
+}
