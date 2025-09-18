@@ -1,12 +1,17 @@
 import Card from "@/components/ui/card";
+import * as motion from "motion/react-client";
 import { PiUsersBold } from "react-icons/pi";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import { FaBullseye } from "react-icons/fa";
-
+import { redirect } from "next/navigation";
 import { FiEdit } from "react-icons/fi";
-import * as motion from "motion/react-client";
+import { auth } from "@/auth";
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const session = await auth();
+  if (!session?.user) {
+    redirect("/");
+  }
   return (
     <div className="relative z-10 w-full flex-1 overflow-auto">
       <main className="w-full px-4 py-4 sm:px-6 lg:px-8">
@@ -17,7 +22,7 @@ export default function Dashboard() {
           className="mb-8"
         >
           <h1 className="text-foreground mb-2 text-4xl font-bold">
-            Welcome to Zettabyte Dashboard
+            Welcome to, {session?.user?.name}
           </h1>
           <p className="text-muted-foreground text-lg">
             Monitor your application performance and user engagement
