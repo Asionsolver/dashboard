@@ -6,6 +6,8 @@ import { redirect } from "next/navigation";
 import { FiEdit } from "react-icons/fi";
 import { auth } from "@/auth";
 import StatisticsCard from "@/components/ui/statistics-card";
+import ErrorDemo from "@/components/error/error-demo";
+import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
 
 export default async function Dashboard() {
   const session = await auth();
@@ -22,7 +24,7 @@ export default async function Dashboard() {
           className="mb-8"
         >
           <h1 className="text-foreground mb-2 text-4xl font-bold">
-            Welcome to, {session?.user?.name}
+            Welcome to, {capitalizeFirstLetter(session?.user?.name)}
           </h1>
           <p className="text-muted-foreground text-lg">
             Monitor your application performance and user engagement
@@ -58,6 +60,16 @@ export default async function Dashboard() {
             value="89%"
             change="+3%"
           />
+        </motion.div>
+
+        {/* Error Handling Demo Section */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mb-8"
+        >
+          <ErrorDemo />
         </motion.div>
       </main>
     </div>

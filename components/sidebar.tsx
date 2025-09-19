@@ -42,7 +42,7 @@ const Sidebar = () => {
         className={`bg-sidebar border-border flex h-full flex-col border-r p-4 backdrop-blur-md`}
       >
         <button
-          className="hover:bg-sidebar-primary ml-2 max-w-fit cursor-pointer rounded-full p-2 text-gray-300 transition-colors hover:text-white"
+          className={`hover:bg-sidebar-primary max-w-fit cursor-pointer rounded-full p-2 text-gray-300 transition-all hover:text-white ${isSidebarOpen ? "ml-0" : "ml-2"}`}
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           aria-label="Toggle Sidebar"
         >

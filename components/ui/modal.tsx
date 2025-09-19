@@ -47,7 +47,7 @@ export default function Modal({
                   </h2>
                   <motion.button
                     onClick={onClose}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-background bg-destructive-foreground hover:bg-destructive hover:text-primary-foreground rounded-md px-2 py-0.5 transition-all"
                   >
                     ✕
                   </motion.button>

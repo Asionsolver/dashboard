@@ -11,11 +11,12 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { FiLogOut } from "react-icons/fi";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
+import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
 
 export default function HeaderClient({ session }: { session: Session }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-
+  console.log(session);
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -69,7 +70,7 @@ export default function HeaderClient({ session }: { session: Session }) {
                 className="rounded-full border border-gray-600 shadow-md"
               />
               <span className="hidden text-sm font-medium sm:block sm:text-base">
-                {session?.user?.name}
+                {capitalizeFirstLetter(session?.user?.name)}
               </span>
             </div>
 
@@ -82,7 +83,7 @@ export default function HeaderClient({ session }: { session: Session }) {
                   transition={{ duration: 0.2, ease: "easeInOut" }}
                   className="bg-sidebar border-border absolute -right-6 z-20 mt-2 w-45 rounded-lg border p-2 shadow-xl"
                 >
-                  <Link href="#" className="block">
+                  <Link href="/profile" className="block">
                     <motion.div
                       whileHover={{
                         backgroundColor: "rgba(107, 114, 128, 0.3)",
@@ -93,7 +94,7 @@ export default function HeaderClient({ session }: { session: Session }) {
                       My Profile
                     </motion.div>
                   </Link>
-                  <Link href="#" className="block">
+                  <Link href="/setting" className="block">
                     <motion.div
                       whileHover={{
                         backgroundColor: "rgba(107, 114, 128, 0.3)",

@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import type { ReactNode } from "react";
 
@@ -24,9 +25,11 @@ export default function Card({
       whileTap={onClick ? { scale: 0.98 } : undefined}
       transition={{ duration: 0.2 }}
       onClick={onClick}
-      className={`card-content bg-card border-border rounded-lg border p-6 shadow-sm ${
-        onClick ? "cursor-pointer" : ""
-      } ${className}`}
+      className={cn(
+        "card-content bg-card border-border rounded-lg border p-6 shadow-sm",
+        onClick ? "cursor-pointer" : "",
+        className,
+      )}
     >
       {children}
     </MotionDiv>

@@ -12,8 +12,8 @@ const BackgroundAnimation = () => {
     delay: Math.random() * 5,
     opacity: Math.random() * 0.5 + 0.1,
     color: [
-      "bg-blue-400",
-      "bg-purple-400",
+      "bg-primary",
+      "bg-chart-2",
       "bg-pink-400",
       "bg-indigo-400",
       "bg-cyan-400",

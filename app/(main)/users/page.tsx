@@ -6,28 +6,24 @@ import React, { useState } from "react";
 import { motion } from "motion/react";
 import UserModal from "@/components/users/user-modal";
 import UserSkeleton from "@/components/users/user-skeleton";
-
+import { fadeInUp } from "@/lib/fade";
 const Users = () => {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const {
     data: users,
     loading,
     error,
     refetch,
   } = useFetch<User[]>("https://jsonplaceholder.typicode.com/users");
-
   const handleUserClick = (user: User) => {
     setSelectedUser(user);
     setIsModalOpen(true);
   };
-
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedUser(null);
   };
-
   if (error) {
     return (
       <div className="p-8">
@@ -36,20 +32,14 @@ const Users = () => {
     );
   }
   return (
-    <div className="relative z-10 w-full flex-1 overflow-auto">
+    <div className="relative z-10 w-full flex-1">
       <main className="w-full px-4 py-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-8"
-        >
+        <motion.div {...fadeInUp}>
           <h1 className="text-foreground mb-2 text-4xl font-bold">Users</h1>
           <p className="text-muted-foreground text-lg">
             Manage and view user profiles and information
           </p>
         </motion.div>
-
         {loading ? (
           <UserSkeleton />
         ) : (
@@ -57,7 +47,7 @@ const Users = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-card border-border overflow-hidden rounded-lg border"
+            className="bg-card border-border mt-4 overflow-hidden rounded-lg border"
           >
             <div className="overflow-x-auto">
               <table className="w-full">
@@ -109,7 +99,6 @@ const Users = () => {
             </div>
           </motion.div>
         )}
-
         <UserModal
           user={selectedUser}
           isOpen={isModalOpen}
@@ -119,5 +108,4 @@ const Users = () => {
     </div>
   );
 };
-
 export default Users;

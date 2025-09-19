@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { cn } from "@/lib/utils";
 
 interface SkeletonProps {
   className?: string;
@@ -23,7 +24,7 @@ export default function Skeleton({
           ease: "easeInOut",
         },
       })}
-      className={`bg-muted rounded ${className}`}
+      className={cn(`bg-muted rounded ${className}`)}
     />
   );
 }

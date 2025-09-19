@@ -5,6 +5,7 @@ import PostCardSkeleton from "@/components/posts/post-card-skeleton";
 import ErrorMessage from "@/components/ui/error-message";
 
 import { useFetch } from "@/hooks/useFetch";
+import { fadeInUp } from "@/lib/fade";
 import type { Post } from "@/types/posts";
 import { motion } from "motion/react";
 
@@ -23,25 +24,21 @@ const Post = () => {
       </div>
     );
   }
+
   return (
-    <div className="relative z-10 w-full flex-1 overflow-auto">
+    <div className="relative z-10 w-full flex-1">
       <main className="w-full px-4 py-4 sm:px-6 lg:px-8">
-        {" "}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-8"
-        >
+        <motion.div {...fadeInUp} className="mb-8">
           <h1 className="text-foreground mb-2 text-4xl font-bold">Posts</h1>
           <p className="text-muted-foreground text-lg">
             Browse through all posts from our community
           </p>
         </motion.div>
+
         {loading ? (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 9 }).map((_, index) => (
-              <PostCardSkeleton key={index} />
+            {Array.from({ length: 9 }, (_, i) => (
+              <PostCardSkeleton key={i} />
             ))}
           </div>
         ) : (
@@ -51,8 +48,8 @@ const Post = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
           >
-            {posts?.map((post, index) => (
-              <PostCard key={post.id} post={post} index={index} />
+            {posts?.map((post) => (
+              <PostCard key={post.id} post={post} index={post.id} />
             ))}
           </motion.div>
         )}

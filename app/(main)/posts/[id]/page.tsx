@@ -9,6 +9,7 @@ import type { Post } from "@/types/posts";
 import { useFetch } from "@/hooks/useFetch";
 import { motion } from "motion/react";
 import PostDetailSkeleton from "@/components/posts/post-detail-skeleton";
+import { fadeInUp } from "@/lib/fade";
 
 interface PostDetailPageProps {
   params: Promise<{ id: string }> | { id: string };
@@ -27,7 +28,7 @@ export default function PostDetailPage({ params }: PostDetailPageProps) {
 
   if (loading) {
     return (
-      <div className="flex min-h-[400px] items-center justify-center p-8">
+      <div className="flex min-h-[400px] items-center justify-center">
         <PostDetailSkeleton />
       </div>
     );
@@ -52,12 +53,7 @@ export default function PostDetailPage({ params }: PostDetailPageProps) {
   return (
     <div className="relative z-10 w-full flex-1 overflow-auto">
       <main className="w-full px-4 py-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-6"
-        >
+        <motion.div {...fadeInUp} className="mb-6">
           <Link
             href="/posts"
             className="text-primary hover:text-primary/80 mb-4 inline-block text-sm font-medium"

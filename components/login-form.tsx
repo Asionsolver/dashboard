@@ -14,11 +14,11 @@ function LoginForm() {
 
       {/* Content */}
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4 py-12">
-        <div className="w-full max-w-md rounded-2xl bg-white/80 p-8 shadow-xl backdrop-blur-md">
+        <div className="bg-primary-foreground/80 w-full max-w-md rounded-2xl p-8 shadow-xl backdrop-blur-md">
           {/* Logo */}
           <div className="mb-8 text-center">
             <h1 className="text-2xl font-bold">
-              User<span className="text-blue-500">Plus</span>
+              Zetta<span className="text-primary">byte</span>
             </h1>
           </div>
 
@@ -52,7 +52,7 @@ function LoginForm() {
               value="google"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              className="flex w-full items-center justify-center gap-2 rounded-lg bg-white py-3 font-medium text-black shadow-md transition-colors hover:bg-gray-100"
+              className="bg-primary-foreground text-background hover:bg-card-foreground flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg py-3 font-medium shadow-md transition-colors"
             >
               <Image
                 src={GoogleLogo}
@@ -66,11 +66,11 @@ function LoginForm() {
 
           {/* Footer */}
           <div className="mt-8 text-center">
-            <p className="text-gray-600">
+            <p className="text-border">
               Already a Member?{" "}
               <motion.a
                 whileHover={{ scale: 1.05 }}
-                className="font-medium text-blue-600 hover:underline"
+                className="text-chart-5 font-medium hover:underline"
                 href="#"
               >
                 SIGN IN
