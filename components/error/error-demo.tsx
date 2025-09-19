@@ -37,6 +37,7 @@ export default function ErrorDemo() {
   const handleReset = () => {
     setTriggerError(false);
     setSimulateNetworkError(false);
+    refetch(); // Refetch to reset state
   };
 
   const ThrowError = () => {
