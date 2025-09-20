@@ -76,11 +76,11 @@ export default function PostDetailPage({ params }: PostDetailPageProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <Card>
-            <h1 className="text-foreground mb-6 text-3xl font-bold capitalize">
+            <h1 className="text-foreground mb-6 text-xl font-bold capitalize md:text-3xl">
               {post.title}
             </h1>
             <div className="prose prose-gray max-w-none">
-              <p className="text-foreground text-lg leading-relaxed">
+              <p className="text-foreground text-sm leading-relaxed md:text-lg">
                 {post.body}
               </p>
             </div>
