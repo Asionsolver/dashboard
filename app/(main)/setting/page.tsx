@@ -28,9 +28,7 @@ export default function SettingsPage() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="bg-sidebar border-border w-full max-w-3xl rounded-2xl border p-8 shadow-2xl"
       >
-        <h1 className="text-primary-foreground mb-6 text-3xl font-bold">
-          Settings
-        </h1>
+        <h1 className="mb-6 text-3xl font-bold">Settings</h1>
 
         {/* Profile Section */}
         <motion.section
@@ -40,7 +38,7 @@ export default function SettingsPage() {
           whileHover={{ scale: 1.01 }}
           className="mb-8"
         >
-          <h2 className="text-primary-foreground mb-4 text-xl font-semibold">
+          <h2 className="text-muted-foreground mb-4 text-xl font-semibold">
             Profile Settings
           </h2>
           <div className="flex items-center space-x-4">
@@ -49,10 +47,10 @@ export default function SettingsPage() {
               alt={session.user.name ?? "User Avatar"}
               width={70}
               height={70}
-              className="border-border rounded-full border-2 shadow-md"
+              className="border-border rounded-full border-2 shadow-md "
             />
             <div>
-              <p className="text-primary-foreground text-lg font-medium">
+              <p className="text-lg font-medium">
                 {capitalizeFirstLetter(session.user.name)}
               </p>
               <p className="text-muted-foreground text-sm">
@@ -69,9 +67,7 @@ export default function SettingsPage() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mb-8"
         >
-          <h2 className="text-primary-foreground mb-4 text-xl font-semibold">
-            Account Settings
-          </h2>
+          <h2 className="mb-4 text-xl font-semibold">Account Settings</h2>
           <div className="space-y-4">
             <motion.div
               whileHover={{ scale: 1.02 }}
@@ -102,24 +98,20 @@ export default function SettingsPage() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <h2 className="text-primary-foreground mb-4 text-xl font-semibold">
-            Notifications
-          </h2>
+          <h2 className="mb-4 text-xl font-semibold">Notifications</h2>
           <div className="space-y-4">
             <motion.div
               whileHover={{ scale: 1.02 }}
               className="bg-card flex items-center justify-between rounded-lg p-4 shadow-md"
             >
-              <span className="text-primary-foreground">Email Alerts</span>
+              <span className="text-muted-foreground">Email Alerts</span>
               <input type="checkbox" defaultChecked className="h-5 w-5" />
             </motion.div>
             <motion.div
               whileHover={{ scale: 1.02 }}
               className="bg-card flex items-center justify-between rounded-lg p-4 shadow-md"
             >
-              <span className="text-primary-foreground">
-                Push Notifications
-              </span>
+              <span className="text-muted-foreground">Push Notifications</span>
               <input type="checkbox" className="h-5 w-5" />
             </motion.div>
           </div>

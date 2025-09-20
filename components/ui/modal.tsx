@@ -28,7 +28,7 @@ export default function Modal({
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={onClose}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+            className="fixed inset-0 flex items-center justify-center bg-black/50 p-4"
           >
             {/* Modal Content */}
             <motion.div
@@ -47,7 +47,7 @@ export default function Modal({
                   </h2>
                   <motion.button
                     onClick={onClose}
-                    className="text-background bg-destructive-foreground hover:bg-destructive hover:text-primary-foreground rounded-md px-2 py-0.5 transition-all"
+                    className="border-border hover:bg-destructive hover:text-primary-foreground rounded-md border px-2 py-0.5 shadow-2xl transition-all"
                   >
                     ✕
                   </motion.button>

@@ -71,7 +71,7 @@ export default function ErrorDemo() {
           </Button>
 
           <Button
-            className="text-background bg-white"
+            className="bg-background text-accent-foreground border-border border"
             hover
             onClick={handleReset}
           >

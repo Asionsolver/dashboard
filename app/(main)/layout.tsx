@@ -14,7 +14,7 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="bg-sidebar flex h-screen overflow-hidden font-mono text-white">
+    <div className="bg-sidebar text-foreground flex h-screen overflow-hidden font-mono">
       {/* Sidebar Component */}
       <Sidebar />
 

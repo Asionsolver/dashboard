@@ -4,10 +4,15 @@ import { MdOutlineDashboard } from "react-icons/md";
 import { PiUsersBold } from "react-icons/pi";
 import { FiEdit } from "react-icons/fi";
 import { FiSidebar } from "react-icons/fi";
-
-import { useEffect, useState } from "react";
+import { IoInvertModeSharp } from "react-icons/io5";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { ThemeSwitch } from "./ui/theme-switch";
+import { useTheme } from "next-themes";
+import { themes } from "@/lib/theme";
+import Dropdown from "./ui/dropdown";
+import { isActive } from "@/utils/isActive";
 type SidebarItem = {
   name: string;
   href: string;
@@ -22,8 +27,16 @@ const ICONS = {
 const Sidebar = () => {
   const [sidebarItems, setSidebarItems] = useState<SidebarItem[]>([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const { setTheme } = useTheme();
+  const [isThemeDropdownOpen, setIsThemeDropdownOpen] = useState(false);
   // console.log(pathname);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     // Fetch sidebar items from the JSON file
@@ -34,38 +47,94 @@ const Sidebar = () => {
     };
     fetchSidebarItems();
   }, []);
+
+  // outside click handler for closing dropdown
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
+        setIsThemeDropdownOpen(false);
+      }
+    }
+    if (isThemeDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isThemeDropdownOpen]);
   return (
     <div
-      className={`relative z-10 flex-shrink-0 transition-all duration-300 ease-in-out ${isSidebarOpen ? "w-64" : "w-21"}`}
+      className={`relative z-[1000] flex-shrink-0 transition-all duration-300 ease-in-out ${isClient ? (isSidebarOpen ? "w-64" : "w-21") : "w-64"}`}
     >
       <div
         className={`bg-sidebar border-border flex h-full flex-col border-r p-4 backdrop-blur-md`}
       >
         <button
-          className={`hover:bg-sidebar-primary max-w-fit cursor-pointer rounded-full p-2 text-gray-300 transition-all hover:text-white ${isSidebarOpen ? "ml-0" : "ml-2"}`}
+          className={`hover:bg-sidebar-primary max-w-fit cursor-pointer rounded p-2 transition-all hover:text-white${isClient ? (isSidebarOpen ? "ml-0" : "ml-2") : ""}`}
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           aria-label="Toggle Sidebar"
         >
           <FiSidebar size={24} />
         </button>
-        <nav className="mt-8 flex-grow">
-          {sidebarItems?.map((item) => {
-            const IconComponents = ICONS[item.icon];
-            return (
-              <Link key={item.name} href={item.href}>
-                <div
-                  className={`hover:bg-chart-5/80 mb-2 flex items-center rounded-lg p-4 text-sm transition-colors ${
-                    pathname === item.href ? "bg-chart-5 font-semibold" : ""
-                  }`}
+        <nav className="mt-8 flex flex-grow flex-col justify-between">
+          <div>
+            {sidebarItems?.map((item) => {
+              const IconComponents = ICONS[item.icon];
+              return (
+                <Link key={item.name} href={item.href}>
+                  <div
+                    className={`hover:bg-chart-5 hover:text-primary-foreground mb-2 flex items-center rounded-lg p-4 text-sm transition-colors ${
+                      isActive(pathname, item.href)
+                        ? "hover:bg-chart-5/90 bg-chart-5 text-primary-foreground font-semibold"
+                        : ""
+                    }`}
+                  >
+                    <IconComponents size={20} style={{ minWidth: "20px" }} />
+                    {(isClient ? isSidebarOpen : true) && (
+                      <span className="ml-3 whitespace-nowrap">
+                        {item.name}
+                      </span>
+                    )}
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="border-border border-t py-4">
+            <div className="relative flex justify-center" ref={dropdownRef}>
+              {isClient && !isSidebarOpen ? (
+                <Dropdown
+                  trigger={
+                    <button className="bg-muted hover:bg-sidebar-primary flex h-8 w-8 cursor-pointer items-center justify-center rounded hover:text-white">
+                      <IoInvertModeSharp size={20} />
+                    </button>
+                  }
+                  className="w-36"
+                  placement="top" // up animation
                 >
-                  <IconComponents size={20} style={{ minWidth: "20px" }} />
-                  {isSidebarOpen && (
-                    <span className="ml-3 whitespace-nowrap">{item.name}</span>
-                  )}
-                </div>
-              </Link>
-            );
-          })}
+                  {themes.map((opt) => {
+                    const Icon = opt.icon;
+                    return (
+                      <button
+                        key={opt.name}
+                        onClick={() => setTheme(opt.name)}
+                        className="text-foreground hover:bg-primary hover:text-primary-foreground flex w-full items-center gap-2 rounded px-3 py-2 text-sm"
+                      >
+                        <Icon className="h-4 w-4" />
+                        <span>{opt.label}</span>
+                      </button>
+                    );
+                  })}
+                </Dropdown>
+              ) : (
+                <ThemeSwitch />
+              )}
+            </div>
+          </div>
         </nav>
       </div>
     </div>

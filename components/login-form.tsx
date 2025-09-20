@@ -7,7 +7,7 @@ function LoginForm() {
   return (
     <form
       action={doSocialLogin}
-      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50"
+      className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50 text-gray-800"
     >
       {/* Background Animation */}
       <BackgroundAnimation />
@@ -52,13 +52,14 @@ function LoginForm() {
               value="google"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-primary-foreground text-background hover:bg-card-foreground flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg py-3 font-medium shadow-md transition-colors"
+              className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-white py-3 font-medium shadow-md transition-colors hover:bg-gray-950 hover:text-white"
             >
               <Image
                 src={GoogleLogo}
                 alt="google-logo"
                 width={20}
                 height={20}
+                className=""
               />
               Sign up with Google
             </motion.button>
@@ -66,7 +67,7 @@ function LoginForm() {
 
           {/* Footer */}
           <div className="mt-8 text-center">
-            <p className="text-border">
+            <p className="text-gray-500">
               Already a Member?{" "}
               <motion.a
                 whileHover={{ scale: 1.05 }}

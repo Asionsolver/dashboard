@@ -20,14 +20,14 @@ export default function StatisticsCard({
       transition={{ type: "spring", stiffness: 300 }}
     >
       <div className="bg-chart-5 absolute -top-[2.5em] -right-[2.5em] z-[-1] h-[5em] w-[5em] rounded-full duration-500 group-hover:scale-[1200%]"></div>
-      <div className="px-4 py-4 sm:px-3 sm:py-6">
+      <div className="hover:text-primary-foreground px-4 py-4 sm:px-3 sm:py-6">
         <span>
           <Icon size={20} className="mr-2 mb-4" />
-          <span className="text-sm font-medium text-gray-400 group-hover:text-white">
+          <span className="text-sm font-semibold group-hover:text-white">
             {name}
           </span>
         </span>
-        <h3 className="text-2xl font-semibold text-white">{value}</h3>
+        <h3 className="text-2xl font-semibold">{value}</h3>
         <span
           className={`mt-1 text-sm font-medium ${
             change.startsWith("+")
