@@ -87,21 +87,21 @@ export default function PostDetailPage({ params }: PostDetailPageProps) {
 
             <div className="border-border mt-8 border-t pt-6">
               <div className="flex items-center justify-between">
-                <div className="text-muted-foreground text-sm">
+                <div className="text-muted-foreground text-xs md:text-sm">
                   Published by User {post.userId}
                 </div>
                 <div className="flex gap-2">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-4 py-2 text-sm font-medium transition-colors"
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-2 py-2 text-xs font-medium transition-colors md:px-4 md:text-sm"
                   >
                     Like
                   </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-lg px-4 py-2 text-sm font-medium transition-colors"
+                    className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-lg px-2 py-2 text-xs font-medium transition-colors md:px-4 md:text-sm"
                   >
                     Share
                   </motion.button>

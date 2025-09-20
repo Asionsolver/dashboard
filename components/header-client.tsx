@@ -33,6 +33,7 @@ export default function HeaderClient({ session }: { session: Session }) {
           />
 
           <Dropdown
+            className="top-12 -left-[120px] sm:-left-0"
             trigger={
               <div className="flex cursor-pointer items-center space-x-2 sm:space-x-3">
                 <Image

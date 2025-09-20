@@ -81,14 +81,6 @@ export default function ErrorDemo() {
           >
             Component Error
           </Button>
-
-          <Button
-            className="bg-background text-accent-foreground border-border absolute top-0 right-2 border text-sm md:static md:text-base"
-            hover
-            onClick={handleReset}
-          >
-            Reset
-          </Button>
         </div>
 
         {/* Error Demo Results */}
@@ -112,13 +104,6 @@ export default function ErrorDemo() {
                 handleReset();
               }}
             />
-          )}
-
-          {data && !loading && !error && (
-            <div className="text-green-600">
-              ✅ Successfully loaded {Array.isArray(data) ? data.length : 1}{" "}
-              items
-            </div>
           )}
 
           {!triggerError &&
