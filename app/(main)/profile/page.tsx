@@ -15,7 +15,7 @@ export default function ProfilePage() {
     <div className="relative z-10 w-full flex-1">
       <motion.main
         className="w-full px-4 py-4 sm:px-6 lg:px-8"
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 30 }}
         transition={{ duration: 0.5, ease: "easeInOut" }}

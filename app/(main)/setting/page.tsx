@@ -23,7 +23,7 @@ export default function SettingsPage() {
       className="my-auto flex flex-col items-center justify-center p-4"
     >
       <motion.div
-        initial={{ y: 40, opacity: 0 }}
+        initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="bg-sidebar border-border w-full max-w-3xl rounded-2xl border p-8 shadow-2xl"
@@ -32,7 +32,7 @@ export default function SettingsPage() {
 
         {/* Profile Section */}
         <motion.section
-          initial={{ y: 30, opacity: 0 }}
+          initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           whileHover={{ scale: 1.01 }}
@@ -47,7 +47,7 @@ export default function SettingsPage() {
               alt={session.user.name ?? "User Avatar"}
               width={70}
               height={70}
-              className="border-border rounded-full border-2 shadow-md "
+              className="border-border rounded-full border-2 shadow-md"
             />
             <div>
               <p className="text-lg font-medium">
@@ -62,7 +62,7 @@ export default function SettingsPage() {
 
         {/* Account Section */}
         <motion.section
-          initial={{ y: 30, opacity: 0 }}
+          initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mb-8"
@@ -94,7 +94,7 @@ export default function SettingsPage() {
 
         {/* Notifications Section */}
         <motion.section
-          initial={{ y: 30, opacity: 0 }}
+          initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
