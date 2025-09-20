@@ -9,7 +9,7 @@ import UserSkeleton from "@/components/users/user-skeleton";
 import { fadeInUp } from "@/lib/fade";
 import { MdOutlineEmail } from "react-icons/md";
 import { GoOrganization } from "react-icons/go";
-import { CiGlobe } from "react-icons/ci";
+
 import { FaPhoneAlt } from "react-icons/fa";
 const Users = () => {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
@@ -123,7 +123,7 @@ const Users = () => {
                   className="hover:bg-muted/30 flex cursor-pointer items-start gap-4 p-4 transition-all hover:shadow-sm"
                 >
                   {/* Avatar */}
-                  <div className="bg-primary/10 text-primary flex h-12 w-12 items-center justify-center rounded-full text-lg font-semibold">
+                  <div className="bg-primary/10 text-primary flex items-center justify-center rounded-full px-4 py-2 text-lg font-semibold">
                     {user.name.charAt(0)}
                   </div>
 

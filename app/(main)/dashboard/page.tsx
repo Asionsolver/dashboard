@@ -23,10 +23,10 @@ export default async function Dashboard() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-8"
         >
-          <h1 className="text-foreground mb-2 text-4xl font-bold">
+          <h1 className="text-foreground mb-2 text-2xl font-bold md:text-4xl">
             Welcome to, {capitalizeFirstLetter(session?.user?.name)}
           </h1>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-muted-foreground text-sm md:text-lg">
             Monitor your application performance and user engagement
           </p>
         </motion.div>

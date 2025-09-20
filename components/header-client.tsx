@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import BDFlag from "../public/flag/bd.svg";
-import { SlBell } from "react-icons/sl";
 import DefaultAvatar from "../public/avatar/default.svg";
 import type { Session } from "next-auth";
 import { CgProfile } from "react-icons/cg";
@@ -32,10 +31,6 @@ export default function HeaderClient({ session }: { session: Session }) {
             height={18}
             className="cursor-pointer rounded-full shadow-md"
           />
-
-          <div className="relative">
-            <SlBell className="h-5 w-5 cursor-pointer sm:h-6 sm:w-6" />
-          </div>
 
           <Dropdown
             trigger={

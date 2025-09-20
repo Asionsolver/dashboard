@@ -49,29 +49,41 @@ export default function ErrorDemo() {
   return (
     <div className="space-y-6">
       <Card>
-        <h3 className="text-foreground mb-4 text-lg font-semibold">
+        <h3 className="text-foreground mb-4 text-base font-semibold md:text-lg">
           Error Handling Demo
         </h3>
-        <p className="text-muted-foreground mb-4">
+        <p className="text-muted-foreground mb-4 text-sm md:text-base">
           Test different error scenarios to see how the application handles them
           gracefully.
         </p>
 
         <div className="relative mb-6 flex flex-wrap gap-3">
-          <Button hover onClick={handleTriggerError}>
+          <Button
+            hover
+            onClick={handleTriggerError}
+            className="text-sm md:text-base"
+          >
             Trigger API Error (404)
           </Button>
 
-          <Button hover onClick={handleNetworkError}>
+          <Button
+            hover
+            onClick={handleNetworkError}
+            className="text-sm md:text-base"
+          >
             Network Error
           </Button>
 
-          <Button hover onClick={() => setShowComponentError(true)}>
+          <Button
+            hover
+            onClick={() => setShowComponentError(true)}
+            className="text-sm md:text-base"
+          >
             Component Error
           </Button>
 
           <Button
-            className="bg-background text-accent-foreground border-border border"
+            className="bg-background text-accent-foreground border-border absolute top-0 right-2 border text-sm md:static md:text-base"
             hover
             onClick={handleReset}
           >

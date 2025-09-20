@@ -2,8 +2,7 @@
 
 import { MdOutlineDashboard } from "react-icons/md";
 import { PiUsersBold } from "react-icons/pi";
-import { FiEdit } from "react-icons/fi";
-import { FiSidebar } from "react-icons/fi";
+import { FiEdit, FiSidebar } from "react-icons/fi";
 import { IoInvertModeSharp } from "react-icons/io5";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -13,11 +12,13 @@ import { useTheme } from "next-themes";
 import { themes } from "@/lib/theme";
 import Dropdown from "./ui/dropdown";
 import { isActive } from "@/utils/isActive";
+
 type SidebarItem = {
   name: string;
   href: string;
-  icon: keyof typeof ICONS; // "dashboard" | "users" | "edit"
+  icon: keyof typeof ICONS;
 };
+
 const ICONS = {
   dashboard: MdOutlineDashboard,
   users: PiUsersBold,
@@ -32,14 +33,27 @@ const Sidebar = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { setTheme } = useTheme();
   const [isThemeDropdownOpen, setIsThemeDropdownOpen] = useState(false);
-  // console.log(pathname);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
+  // Auto collapse on sm / md screen
   useEffect(() => {
-    // Fetch sidebar items from the JSON file
+    function handleResize() {
+      if (window.innerWidth < 768) {
+        setIsSidebarOpen(false); // collapse
+      } else {
+        setIsSidebarOpen(true); // expand
+      }
+    }
+
+    handleResize(); // initial check
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     const fetchSidebarItems = async () => {
       const response = await fetch("/data/data.json");
       const data = await response.json();
@@ -65,9 +79,12 @@ const Sidebar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isThemeDropdownOpen]);
+
   return (
     <div
-      className={`relative z-[1000] flex-shrink-0 transition-all duration-300 ease-in-out ${isClient ? (isSidebarOpen ? "w-64" : "w-21") : "w-64"}`}
+      className={`relative z-50 flex-shrink-0 transition-all duration-300 ease-in-out ${
+        isClient ? (isSidebarOpen ? "w-64" : "w-21") : "w-64"
+      }`}
     >
       <div
         className={`bg-sidebar border-border flex h-full flex-col border-r p-4 backdrop-blur-md`}
@@ -114,7 +131,7 @@ const Sidebar = () => {
                     </button>
                   }
                   className="w-36"
-                  placement="top" // up animation
+                  placement="top"
                 >
                   {themes.map((opt) => {
                     const Icon = opt.icon;
